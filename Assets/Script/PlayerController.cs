@@ -14,14 +14,17 @@ public class PlayerController : MonoBehaviour
     public float tilt;
     public Boundary boundary;
 
-    void fixedUpdate ()
+ 
+
+    void FixedUpdate ()
     {
-        float moveHorizontal = Input.GetAxis ("Horizontal");
+       
+        float moveHorizontal =Input.GetAxis ("Horizontal");
         float moveVertical = Input.GetAxis ("Vertical");
 
+        print("movment: " + moveHorizontal);
         Vector3 movement = new Vector3 (moveHorizontal, 0.0f, moveVertical);
         GetComponent<Rigidbody>().velocity = movement * speed;
-
         GetComponent<Rigidbody>().position = new Vector3
             (
             Mathf.Clamp(GetComponent<Rigidbody>().position.x, boundary.xMin, boundary.xMax),
